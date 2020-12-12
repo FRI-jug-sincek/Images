@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: images-deployment
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: images
+  template:
+    metadata:
+      labels:
+        app: images
+    spec:
+      containers:
+        - image: frijugsincek/images:2020-12-03-04-24-45
+          name: images
+          env:
+            - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
+              value: jdbc:postgresql://suleiman.db.elephantsql.com:5432/sdbifqsd
+            - name: KUMULUZEE_DATASOURCES0_USERNAME
+              value: sdbifqsd
+            - name: KUMULUZEE_DATASOURCES0_PASSWORD
+              value: vnesi-geslo
+          ports:
+            - containerPort: 8080
+              name: server
+              protocol: TCP
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: images
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: server
+  selector:
+    app: images

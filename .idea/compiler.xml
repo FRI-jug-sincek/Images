@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="images-services" />
+        <module name="images-lib" />
+        <module name="images-models" />
+        <module name="images-api" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="images-api" target="8" />
+      <module name="images-lib" target="8" />
+      <module name="images-models" target="8" />
+      <module name="images-services" target="8" />
+      <module name="users" target="8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
