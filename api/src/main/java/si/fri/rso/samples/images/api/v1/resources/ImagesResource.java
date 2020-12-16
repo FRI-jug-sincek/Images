@@ -75,8 +75,7 @@ public class ImagesResource {
 
     @PUT
     @Path("{imageId}")
-    @
-    public Response putImage(@PathParam("imageId") Integer imageId, Image image, @) {
+    public Response putImage(@PathParam("imageId") Integer imageId, Image image) {
 
         image = imagesBean.putImage(imageId, image);
 
