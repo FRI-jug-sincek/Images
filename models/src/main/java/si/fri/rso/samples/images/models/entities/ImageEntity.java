@@ -16,17 +16,14 @@ public class ImageEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "foreignKey")
+    private Integer foreignKey;
 
-    @Column(name = "surname")
-    private String surname;
+    @Column(name = "entity")
+    private String entity;
 
-    @Column(name = "age")
-    private Integer age;
-
-    @Column(name = "location")
-    private Integer location;
+    @Column(name = "uri")
+    private String uri;
 
     @Column(name = "created")
     private Instant created;
@@ -39,36 +36,28 @@ public class ImageEntity {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Integer getForeignKey() {
+        return foreignKey;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setForeignKey(Integer foreignKey) {
+        this.foreignKey = foreignKey;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getEntity() {
+        return entity;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setEntity(String entity) {
+        this.entity = entity;
     }
 
-    public Integer getAge() {
-        return age;
+    public String getUri() {
+        return uri;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public Integer getLocation() {
-        return location;
-    }
-
-    public void setLocation(Integer location) {
-        this.location = location;
+    public void setUri(String uri) {
+        this.uri = uri;
     }
 
     public Instant getCreated() {

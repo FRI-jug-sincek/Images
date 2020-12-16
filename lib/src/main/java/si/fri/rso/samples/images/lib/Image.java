@@ -5,10 +5,9 @@ import java.time.Instant;
 public class Image {
 
     private Integer imageId;
-    private String name;
-    private String surname;
-    private Integer location;
-    private Integer age;
+    private Integer foreignKey;
+    private String entity;
+    private String uri;
     private Instant created;
 
     public Integer getImageId() {
@@ -19,36 +18,28 @@ public class Image {
         this.imageId = imageId;
     }
 
-    public String getName() {
-        return name;
+    public Integer getForeignKey() {
+        return foreignKey;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setForeignKey(Integer foreignKey) {
+        this.foreignKey = foreignKey;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getEntity() {
+        return entity;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setEntity(String entity) {
+        this.entity = entity;
     }
 
-    public Integer getLocation() {
-        return location;
+    public String getUri() {
+        return uri;
     }
 
-    public void setLocation(Integer location) {
-        this.location = location;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setUri(String uri) {
+        this.uri = uri;
     }
 
     public Instant getCreated() {

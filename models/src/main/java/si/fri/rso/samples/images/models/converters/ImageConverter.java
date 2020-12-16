@@ -10,10 +10,9 @@ public class ImageConverter {
         Image dto = new Image();
         dto.setImageId(entity.getId());
         dto.setCreated(entity.getCreated());
-        dto.setName(entity.getName());
-        dto.setSurname(entity.getSurname());
-        dto.setAge(entity.getAge());
-        dto.setLocation(entity.getLocation());
+        dto.setForeignKey(entity.getForeignKey());
+        dto.setEntity(entity.getEntity());
+        dto.setUri(entity.getUri());
 
         return dto;
 
@@ -23,10 +22,9 @@ public class ImageConverter {
 
         ImageEntity entity = new ImageEntity();
         entity.setCreated(dto.getCreated());
-        entity.setName(dto.getName());
-        entity.setSurname(dto.getSurname());
-        entity.setAge(dto.getAge());
-        entity.setLocation(dto.getLocation());
+        entity.setForeignKey(dto.getForeignKey());
+        entity.setEntity(dto.getEntity());
+        entity.setUri(dto.getUri());
 
         return entity;
 
