@@ -8,6 +8,8 @@ public class Image {
     private Integer foreignKey;
     private String entity;
     private String uri;
+    private Float nsfw;
+    private Integer faces;
     private Instant created;
 
     public Integer getImageId() {
@@ -40,6 +42,22 @@ public class Image {
 
     public void setUri(String uri) {
         this.uri = uri;
+    }
+
+    public Float getNsfw() {
+        return nsfw;
+    }
+
+    public void setNsfw(Float nsfw) {
+        this.nsfw = nsfw;
+    }
+
+    public Integer getFaces() {
+        return faces;
+    }
+
+    public void setFaces(Integer faces) {
+        this.faces = faces;
     }
 
     public Instant getCreated() {

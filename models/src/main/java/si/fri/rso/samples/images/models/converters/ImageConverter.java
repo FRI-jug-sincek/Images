@@ -13,6 +13,8 @@ public class ImageConverter {
         dto.setForeignKey(entity.getForeignKey());
         dto.setEntity(entity.getEntity());
         dto.setUri(entity.getUri());
+        dto.setNsfw(entity.getNsfw());
+        dto.setFaces(entity.getFaces());
 
         return dto;
 
@@ -25,6 +27,8 @@ public class ImageConverter {
         entity.setForeignKey(dto.getForeignKey());
         entity.setEntity(dto.getEntity());
         entity.setUri(dto.getUri());
+        entity.setNsfw(dto.getNsfw());
+        entity.setFaces(dto.getFaces());
 
         return entity;
 

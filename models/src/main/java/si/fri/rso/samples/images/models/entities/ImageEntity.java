@@ -22,8 +22,14 @@ public class ImageEntity {
     @Column(name = "entity")
     private String entity;
 
-    @Column(name = "uri")
+    @Column(name = "uri", length = 1024)
     private String uri;
+
+    @Column(name = "nsfw")
+    private Float nsfw;
+
+    @Column(name = "faces")
+    private Integer faces;
 
     @Column(name = "created")
     private Instant created;
@@ -58,6 +64,22 @@ public class ImageEntity {
 
     public void setUri(String uri) {
         this.uri = uri;
+    }
+
+    public Float getNsfw() {
+        return nsfw;
+    }
+
+    public void setNsfw(Float nsfw) {
+        this.nsfw = nsfw;
+    }
+
+    public Integer getFaces() {
+        return faces;
+    }
+
+    public void setFaces(Integer faces) {
+        this.faces = faces;
     }
 
     public Instant getCreated() {
