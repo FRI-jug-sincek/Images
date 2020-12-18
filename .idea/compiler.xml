@@ -13,11 +13,11 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
-      <module name="images-api" target="14" />
-      <module name="images-lib" target="14" />
-      <module name="images-models" target="14" />
-      <module name="images-services" target="14" />
-      <module name="users" target="14" />
+      <module name="images-api" target="8" />
+      <module name="images-lib" target="8" />
+      <module name="images-models" target="8" />
+      <module name="images-services" target="8" />
+      <module name="users" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

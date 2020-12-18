@@ -17,9 +17,9 @@ spec:
           name: images
           env:
             - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
-              value: jdbc:postgresql://suleiman.db.elephantsql.com:5432/sdbifqsd
+              value: jdbc:postgresql://suleiman.db.elephantsql.com:5432/trchrzvw
             - name: KUMULUZEE_DATASOURCES0_USERNAME
-              value: sdbifqsd
+              value: trchrzvw
             - name: KUMULUZEE_DATASOURCES0_PASSWORD
               value: vnesi-geslo
           ports:
@@ -31,15 +31,27 @@ spec:
 ---
 
 
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: images
+#spec:
+#  type: LoadBalancer
+#  ports:
+#    - port: 8080
+#      protocol: TCP
+#      targetPort: server
+#  selector:
+#    app: images
+
 apiVersion: v1
 kind: Service
 metadata:
   name: images
 spec:
-  type: LoadBalancer
-  ports:
-    - port: 8080
-      protocol: TCP
-      targetPort: server
   selector:
     app: images
+  ports:
+    - name: web
+      port: 8080
+  type: ClusterIP
