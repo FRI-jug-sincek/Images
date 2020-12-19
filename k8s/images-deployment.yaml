@@ -13,7 +13,7 @@ spec:
         app: images
     spec:
       containers:
-        - image: frijugsincek/images:2020-12-19-05-52-56
+        - image: frijugsincek/images:2020-12-19-23-18-04
           name: images
           env:
             - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
@@ -21,7 +21,10 @@ spec:
             - name: KUMULUZEE_DATASOURCES0_USERNAME
               value: trchrzvw
             - name: KUMULUZEE_DATASOURCES0_PASSWORD
-              value: vnesi-geslo
+              valueFrom:
+                secretKeyRef:
+                  name: images-pass
+                  key: KUMULUZEE_DATASOURCES0_IMAGES_PASSWORD
           ports:
             - containerPort: 8080
               name: server
