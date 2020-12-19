@@ -1,5 +1,5 @@
 kumuluzee:
-  name: image-catalog-service
+  name: images-service
   env:
     name: dev
   version: 1.0.0
@@ -17,5 +17,9 @@ kumuluzee:
       data-source-health-check:
         type: liveness
         jndi-name: jdbc/ImagesDS
-  rest-properties:
-    konfiguracijska-spremenljivka: false
+  config:
+    consul:
+      agent: http://40.88.21.225:80
+app-properties:
+  recognition-key:
+  use-apis: false

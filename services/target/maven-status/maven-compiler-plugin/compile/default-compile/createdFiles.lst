@@ -1,2 +1,3 @@
-si/fri/rso/samples/images/services/producers/PersistenceProducer.class
 si/fri/rso/samples/images/services/beans/ImagesBean.class
+si/fri/rso/samples/images/config/AppProperties.class
+si/fri/rso/samples/images/services/producers/PersistenceProducer.class

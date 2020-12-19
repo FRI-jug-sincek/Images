@@ -20,6 +20,7 @@ import kong.unirest.HttpResponse;
 import kong.unirest.JsonNode;
 import kong.unirest.Unirest;
 
+import si.fri.rso.samples.images.config.AppProperties;
 import si.fri.rso.samples.images.lib.Image;
 import si.fri.rso.samples.images.services.beans.ImagesBean;
 
@@ -33,6 +34,9 @@ public class ImagesResource {
 
     @Inject
     private ImagesBean imagesBean;
+
+    @Inject
+    private AppProperties appProperties;
 
     @Context
     protected UriInfo uriInfo;
@@ -76,8 +80,13 @@ public class ImagesResource {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         else {
-            image.setFaces(this.getNumberOfFaces(image.getUri()));
-            image.setNsfw(this.checkIfNsfw(image.getUri()));
+            if (appProperties.getUseApis()) {
+                image.setFaces(this.getNumberOfFaces(image.getUri()));
+                image.setNsfw(this.checkIfNsfw(image.getUri()));
+            } else {
+                image.setFaces(0);
+                image.setNsfw((float) 0);
+            }
             image = imagesBean.createImage(image);
         }
 
@@ -87,8 +96,14 @@ public class ImagesResource {
     @PUT
     @Path("{imageId}")
     public Response putImage(@PathParam("imageId") Integer imageId, Image image) {
-        image.setFaces(this.getNumberOfFaces(image.getUri()));
-        image.setNsfw(this.checkIfNsfw(image.getUri()));
+        if (appProperties.getUseApis()) {
+            image.setFaces(this.getNumberOfFaces(image.getUri()));
+            image.setNsfw(this.checkIfNsfw(image.getUri()));
+        } else {
+            image.setFaces(0);
+            image.setNsfw((float) 0);
+        }
+
         image = imagesBean.putImage(imageId, image);
 
         if (image == null) {
@@ -96,7 +111,6 @@ public class ImagesResource {
         }
 
         return Response.status(Response.Status.NOT_MODIFIED).build();
-
     }
 
     @DELETE
@@ -117,7 +131,7 @@ public class ImagesResource {
         // make an api call to get number of faces in the image
         HttpResponse<String> response = Unirest.post("https://face-detection6.p.rapidapi.com/img/face")
                 .header("content-type", "application/json")
-                .header("x-rapidapi-key", "vnesi-ključ") //moj kluč ne ga leakat
+                .header("x-rapidapi-key", appProperties.getRecognitionKey()) //moj kluč ne ga leakat
                 .header("x-rapidapi-host", "face-detection6.p.rapidapi.com")
                 .body("{\"url\": \"" + url + " \",\"accuracy_boost\": 2 }")
                 .asString();
@@ -131,7 +145,7 @@ public class ImagesResource {
         // make an api call to get if image is nsfw
         HttpResponse<String> response = Unirest.post("https://nsfw-image-classification1.p.rapidapi.com/img/nsfw")
                 .header("content-type", "application/json")
-                .header("x-rapidapi-key", "vnesi-ključ") //moj ključ ne ga leakat
+                .header("x-rapidapi-key", appProperties.getRecognitionKey()) //moj ključ ne ga leakat
                 .header("x-rapidapi-host", "nsfw-image-classification1.p.rapidapi.com")
                 .body("{\"url\": \""+url+"\"}").asString();
 
