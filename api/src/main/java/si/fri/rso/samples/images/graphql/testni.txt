@@ -1,0 +1,41 @@
+query allImages {
+   allImages(pagination: {offset: 0, limit: 10},
+    						sort: {fields: [{field: "created", order: DESC}]}) {
+    result {
+    	imageId
+    	uri
+    	nsfw
+    	faces
+      created
+    }
+    pagination {
+      offset
+      limit
+      total
+    }
+  }
+}
+
+query getImage {
+	image(imageId:1){
+        imageId
+        uri
+        faces
+        nsfw
+  }
+}
+
+mutation addImage{
+  addImage(image: {uri: "https://cdn.netlify.com/ec285142a9a2373c8507849655fc0a6b03f88510/39b50/img/blog/graphql-post.png", foreignKey: 1, entity: "user"}){
+    imageId
+    uri
+    foreignKey
+    entity
+  }
+}
+
+mutation deleteImage{
+  deleteImage(imageId: 1){
+    deleted
+  }
+}

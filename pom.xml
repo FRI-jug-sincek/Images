@@ -24,7 +24,7 @@
 
         <kumuluzee.version>3.11.0</kumuluzee.version>
         <kumuluzee-rest.version>1.3.2</kumuluzee-rest.version>
-
+        <kumuluzee-graphql.version>1.0.3</kumuluzee-graphql.version>
         <postgresql.version>42.2.17</postgresql.version>
     </properties>
 
@@ -84,6 +84,16 @@
                 <artifactId>kumuluzee-config-consul</artifactId>
                 <groupId>com.kumuluz.ee.config</groupId>
                 <version>${kumuluzee-config.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kumuluz.ee.graphql</groupId>
+                <artifactId>kumuluzee-graphql</artifactId>
+                <version>${kumuluzee-graphql.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kumuluz.ee.graphql</groupId>
+                <artifactId>kumuluzee-graphql-ui</artifactId>
+                <version>${kumuluzee-graphql.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -1,3 +1,7 @@
 si/fri/rso/samples/images/api/v1/resources/ImagesResource.class
-si/fri/rso/samples/images/api/v1/dtos/ApiError.class
+si/fri/rso/samples/images/graphql/DeleteResponse.class
 si/fri/rso/samples/images/api/v1/ImagesApplication.class
+si/fri/rso/samples/images/graphql/ImageMetadataQueries.class
+si/fri/rso/samples/images/api/v1/dtos/ApiError.class
+si/fri/rso/samples/images/graphql/ImageMetadataMutations.class
+META-INF/kumuluzee/graphql/java.lang.Object

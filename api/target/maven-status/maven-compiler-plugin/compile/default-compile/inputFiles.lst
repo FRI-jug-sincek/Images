@@ -1,3 +1,6 @@
 /Users/julijanjug/Downloads/FAKS/2.MAG/RSO/Images/api/src/main/java/si/fri/rso/samples/images/api/v1/dtos/ApiError.java
+/Users/julijanjug/Downloads/FAKS/2.MAG/RSO/Images/api/src/main/java/si/fri/rso/samples/images/graphql/DeleteResponse.java
+/Users/julijanjug/Downloads/FAKS/2.MAG/RSO/Images/api/src/main/java/si/fri/rso/samples/images/graphql/ImageMetadataQueries.java
 /Users/julijanjug/Downloads/FAKS/2.MAG/RSO/Images/api/src/main/java/si/fri/rso/samples/images/api/v1/resources/ImagesResource.java
+/Users/julijanjug/Downloads/FAKS/2.MAG/RSO/Images/api/src/main/java/si/fri/rso/samples/images/graphql/ImageMetadataMutations.java
 /Users/julijanjug/Downloads/FAKS/2.MAG/RSO/Images/api/src/main/java/si/fri/rso/samples/images/api/v1/ImagesApplication.java
