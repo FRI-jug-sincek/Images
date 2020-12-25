@@ -157,7 +157,6 @@
     <orderEntry type="library" name="Maven: com.google.code.findbugs:jsr305:1.3.9" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.10.4" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.10.4" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.10.4" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.10.4" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-guava:2.10.4" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.4" level="project" />
@@ -176,5 +175,10 @@
     <orderEntry type="library" name="Maven: io.leangen.geantyref:geantyref:1.3.11" level="project" />
     <orderEntry type="library" name="Maven: io.github.classgraph:classgraph:4.8.59" level="project" />
     <orderEntry type="library" name="Maven: com.kumuluz.ee.graphql:kumuluzee-graphql-ui:1.0.3" level="project" />
+    <orderEntry type="library" name="Maven: com.kumuluz.ee.metrics:kumuluzee-metrics-core:2.3.0" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.microprofile.metrics:microprofile-metrics-api:2.3" level="project" />
+    <orderEntry type="library" name="Maven: io.dropwizard.metrics:metrics-core:4.1.0" level="project" />
+    <orderEntry type="library" name="Maven: io.dropwizard.metrics:metrics-jvm:4.1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.10.4" level="project" />
   </component>
 </module>

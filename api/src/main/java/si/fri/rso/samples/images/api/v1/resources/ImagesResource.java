@@ -20,6 +20,12 @@ import kong.unirest.HttpResponse;
 import kong.unirest.JsonNode;
 import kong.unirest.Unirest;
 
+import org.eclipse.microprofile.metrics.Counter;
+import org.eclipse.microprofile.metrics.Histogram;
+import org.eclipse.microprofile.metrics.Timer;
+import org.eclipse.microprofile.metrics.annotation.Counted;
+import org.eclipse.microprofile.metrics.annotation.Metric;
+import org.eclipse.microprofile.metrics.annotation.SimplyTimed;
 import si.fri.rso.samples.images.config.AppProperties;
 import si.fri.rso.samples.images.lib.Image;
 import si.fri.rso.samples.images.services.beans.ImagesBean;
@@ -40,6 +46,22 @@ public class ImagesResource {
 
     @Context
     protected UriInfo uriInfo;
+
+    @Inject
+    @Metric(name = "faces_api_call_counter")
+    private Counter counterFaces;
+
+    @Inject
+    @Metric(name = "nsfw_api_call_counter")
+    private Counter counterNsfw;
+
+    @Inject
+    @Metric(name = "faces_histogram")
+    Histogram histogramFaces;
+
+    @Inject
+    @Metric(name = "nsfw_histogram")
+    Histogram histogramNsfw;
 
     @GET
     public Response getImages() {
@@ -74,6 +96,7 @@ public class ImagesResource {
     }
 
     @POST
+    @Counted(name = "new_image_counter")
     public Response createImage(Image image) {
 
         if ((image.getForeignKey() == null || image.getEntity() == null || image.getUri() == null)) {
@@ -95,6 +118,7 @@ public class ImagesResource {
 
     @PUT
     @Path("{imageId}")
+    @Counted(name = "update_image_counter")
     public Response putImage(@PathParam("imageId") Integer imageId, Image image) {
         if (appProperties.getUseApis()) {
             image.setFaces(this.getNumberOfFaces(image.getUri()));
@@ -127,30 +151,36 @@ public class ImagesResource {
         }
     }
 
+    @SimplyTimed(name = "faces_call_time")
     public Integer getNumberOfFaces(String url) {
+        counterFaces.inc(1);
         // make an api call to get number of faces in the image
         HttpResponse<String> response = Unirest.post("https://face-detection6.p.rapidapi.com/img/face")
                 .header("content-type", "application/json")
-                .header("x-rapidapi-key", appProperties.getRecognitionKey()) //moj kluč ne ga leakat
+                .header("x-rapidapi-key", appProperties.getRecognitionKey())
                 .header("x-rapidapi-host", "face-detection6.p.rapidapi.com")
                 .body("{\"url\": \"" + url + " \",\"accuracy_boost\": 2 }")
                 .asString();
 
         JsonObject jsonObject = new JsonParser().parse(response.getBody().toString()).getAsJsonObject();
         JsonArray obrazi = jsonObject.get("detected_faces").getAsJsonArray(); //seznam obrazov
+        histogramFaces.update(obrazi.size());
         return obrazi.size();
     }
 
+    @SimplyTimed(name = "nsfw_call_time")
     public Float checkIfNsfw(String url) {
+        counterNsfw.inc(1);
         // make an api call to get if image is nsfw
         HttpResponse<String> response = Unirest.post("https://nsfw-image-classification1.p.rapidapi.com/img/nsfw")
                 .header("content-type", "application/json")
-                .header("x-rapidapi-key", appProperties.getRecognitionKey()) //moj ključ ne ga leakat
+                .header("x-rapidapi-key", appProperties.getRecognitionKey())
                 .header("x-rapidapi-host", "nsfw-image-classification1.p.rapidapi.com")
                 .body("{\"url\": \""+url+"\"}").asString();
 
         JsonObject jsonObject = new JsonParser().parse(response.getBody().toString()).getAsJsonObject();
-        Float nsfwProb = jsonObject.get("NSFW_Prob").getAsFloat(); //seznam obrazov
+        Float nsfwProb = jsonObject.get("NSFW_Prob").getAsFloat(); //nsfw vrednost
+        histogramNsfw.update(Math.round(nsfwProb*100));
         return nsfwProb;
     }
 }

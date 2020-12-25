@@ -17,9 +17,14 @@ kumuluzee:
       data-source-health-check:
         type: liveness
         jndi-name: jdbc/ImagesDS
+  metrics:
+    web-instrumentation:
+      - name: images-endpoint
+        url-pattern: /v1/images/*
   config:
     consul:
       agent: http://40.88.21.225:80
+
 app-properties:
   recognition-key:
   use-apis: false
