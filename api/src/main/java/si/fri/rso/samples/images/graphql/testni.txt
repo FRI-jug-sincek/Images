@@ -1,3 +1,5 @@
+http://localhost:8080/graphiql
+
 query allImages {
    allImages(pagination: {offset: 0, limit: 10},
     						sort: {fields: [{field: "created", order: DESC}]}) {
