@@ -5,3 +5,4 @@ si/fri/rso/samples/images/graphql/ImageMetadataQueries.class
 si/fri/rso/samples/images/api/v1/dtos/ApiError.class
 si/fri/rso/samples/images/graphql/ImageMetadataMutations.class
 META-INF/kumuluzee/graphql/java.lang.Object
+META-INF/services/javax.ws.rs.core.Application

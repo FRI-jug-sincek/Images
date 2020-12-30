@@ -23,8 +23,13 @@ kumuluzee:
         url-pattern: /v1/images/*
   config:
     consul:
-      agent: http://40.88.21.225:80
-
+#      agent: http://40.88.21.225:80
+      agent: http://localhost:4200
+  cors-filter:
+    servlet:
+      allow-origin: "http://localhost:4200"
+      allow-subdomains: true
+      supported-methods: "GET, POST, DELETE, HEAD, OPTIONS, PUT"
 app-properties:
   recognition-key:
   use-apis: false
