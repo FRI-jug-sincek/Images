@@ -12,6 +12,11 @@ kumuluzee:
       connection-url: jdbc:postgresql://localhost:5432/images
       username: dbimage
       password: postgres
+  cors-filter:
+    servlet:
+      allow-origin: "*"
+      allow-subdomains: true
+      supported-methods: "GET, POST, DELETE, HEAD, OPTIONS, PUT"
   health:
     checks:
       data-source-health-check:
@@ -25,11 +30,6 @@ kumuluzee:
     consul:
 #      agent: http://40.88.21.225:80
       agent: http://localhost:4200
-  cors-filter:
-    servlet:
-      allow-origin: "*"
-      allow-subdomains: true
-      supported-methods: "GET, POST, DELETE, HEAD, OPTIONS, PUT"
 app-properties:
   recognition-key:
   use-apis: false
