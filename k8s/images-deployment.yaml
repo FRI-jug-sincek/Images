@@ -13,7 +13,7 @@ spec:
         app: images
     spec:
       containers:
-        - image: frijugsincek/images:2021-01-02-19-41-26
+        - image: frijugsincek/images:2021-01-02-20-01-14
           name: images
           env:
             - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
