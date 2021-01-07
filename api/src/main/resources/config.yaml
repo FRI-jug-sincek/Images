@@ -28,8 +28,8 @@ kumuluzee:
         url-pattern: /v1/images/*
   config:
     consul:
-#      agent: http://40.88.21.225:80
-      agent: http://localhost:4200
+     agent: http://40.88.21.225:80
+      # agent: http://localhost:4200
 app-properties:
   recognition-key:
   use-apis: false
